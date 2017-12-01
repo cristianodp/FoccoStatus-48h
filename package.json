@@ -1,0 +1,25 @@
+{
+  "name": "FoccoStatus",
+  "version": "1.0.0",
+  "description": "FoccoStatus",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon",
+    "production": "pm2 start app.js --name my-money-backend"
+  },
+  "author": "Jorge",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "body-parser-json": "^1.9.2",
+    "consign": "^0.1.2",
+    "ejs": "^2.5.1",
+    "express": "^4.14.0",
+    "express-validator": "^2.20.8",
+    "oracledb": "^1.13.1",
+    "pm2": "^2.1.5"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  }
+}
