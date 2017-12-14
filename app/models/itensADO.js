@@ -1,6 +1,6 @@
-const getEstados = function(par,callback) {
+const getItens = function(par,callback) {
    
-    const plsql = `BEGIN :ret := FOCCO_STATUS.RETORNA_ESTADOS(pi_usu_id=> ${par.usuId},pi_cat_id => ${par.catId}, pi_search =>'${ par.search}') ; END;`
+    const plsql = `BEGIN :ret := FOCCO_STATUS.RETORNA_ITENS(pi_usu_id=> ${par.usuId},pi_cat_id => ${par.catId}, pi_estado_id => ${par.estId},pi_search =>  '${par.search}') ; END;`
 
     var oracledb = require('oracledb')
     var conn = require('../../config/oracle/database')
@@ -26,9 +26,9 @@ const getEstados = function(par,callback) {
 }
 
 
-const getEstadosExec = function(par,callback){
+const getItensExec = function(par,callback){
     
-    getEstados(par,function(err,result){
+    getItens(par,function(err,result){
 
         if (err){
             callback(err,null)
@@ -37,7 +37,7 @@ const getEstadosExec = function(par,callback){
             const sql = result.ret
         
             var oracledb = require('oracledb')
-            oracledb.maxRows = 100
+            oracledb.maxRows = 1000
             var conn = require('../../config/oracle/database')
             
             conn().then(function(connection) {
@@ -65,5 +65,5 @@ const getEstadosExec = function(par,callback){
     
 }
 
-module.exports = {getEstados: getEstados,
-    getEstadosExec: getEstadosExec}
+module.exports = {getItens: getItens,
+    getItensExec: getItensExec}

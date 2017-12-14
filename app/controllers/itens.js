@@ -2,7 +2,8 @@ module.exports.getQuery = function(application, req, res){
 	var dadosForm = req.body;
 	console.log(dadosForm);
 	req.assert('usuId','Usuario não informado').notEmpty();
-	
+	req.assert('catId','Categoria não informado').notEmpty();
+	req.assert('estId','Estado não informado').notEmpty();
 
   	var erros = req.validationErrors();
 
@@ -11,8 +12,8 @@ module.exports.getQuery = function(application, req, res){
   	  return;
   	}
 	
-	const ado = require('../models/categoriasADO')
-	ado.getCategorias(dadosForm,function(err,result){
+	const ado = require('../models/itensADO')
+	ado.getItens(dadosForm,function(err,result){
 		if (err){
 			res.send(err)
 		}else{
@@ -33,8 +34,8 @@ module.exports.execQuery = function(application, req, res){
   	  return;
   	}
 	
-	const ado = require('../models/categoriasADO')
-	ado.getCategoriasExec(dadosForm,function(err,result){
+	const ado = require('../models/itensADO')
+	ado.getItensExec(dadosForm,function(err,result){
 		if (err){
 			res.send(err)
 		}else{

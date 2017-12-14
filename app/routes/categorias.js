@@ -5,7 +5,7 @@ module.exports = function(application) {
 		application.app.controllers.categorias.getQuery(application, req, res);		
 	});
 
-	application.post('/api/categorias/Execute', function(req, res){
+	application.post('/api/categorias/execute', function(req, res){
 		console.log('rota api categorias Execute');
 		application.app.controllers.categorias.execQuery(application, req, res);		
 	});
